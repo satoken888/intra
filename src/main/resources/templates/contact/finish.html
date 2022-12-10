@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head lang="ja" th:replace="common :: meta_header('kawatora',~{::link},~{::script})">
+</head>
+
+<body class="c2">
+
+
+    <div th:replace="common :: header"></div>
+
+    <!--PC用（801px以上端末）メニュー-->
+    <div th:replace="common :: pc_nav('contact')"></div>
+
+
+    <!--小さな端末用（800px以下端末）メニュー-->
+    <div th:replace="common :: sp_nav"></div>
+
+    <div id="contents" class="inner">
+        <div id="contents-in">
+
+            <div id="main">
+
+                <section>
+
+                    <h2>送信完了</h2>
+
+                    <!-- フォームの情報はここからです -->
+                    <p class="c">送信が完了しました。</p>
+                    <!-- フォームの情報はここまでです -->
+
+                </section>
+
+            </div>
+            <!--/#main-->
+
+            <div th:replace="common :: submenu"></div>
+            <!--/#sub-->
+
+        </div>
+        <!--/#contents-in-->
+
+    </div>
+    <!--/#contents-->
+
+    <div th:replace="common :: footer"></div>
+
+    <div th:replace="common :: footer_script"></div>
+
+</body>
+
+</html>
