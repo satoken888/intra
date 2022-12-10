@@ -23,7 +23,7 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/")
         ).authorizeHttpRequests(authz -> authz
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .mvcMatchers("/").permitAll()
+                // .mvcMatchers("/").permitAll()
                 .mvcMatchers("/general").hasRole("GENERAL")
                 .mvcMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()

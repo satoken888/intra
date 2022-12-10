@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class LoginController {
+public class MainController {
 
-	@RequestMapping("/")
+	@RequestMapping({"/","/index"})
 	public String index() {
 		return "index";
 	}
@@ -34,6 +34,21 @@ public class LoginController {
     public String top() {
         return "index";
     }
+
+	@RequestMapping("/company")
+	public String viewCompany(){
+		return "company";
+	}
+
+	@RequestMapping("/service")
+	public String viewService(){
+		return "service";
+	}
+
+	@RequestMapping("contact")
+	public String viewContact(){
+		return "contact";
+	}
 
     @GetMapping("/admin")
     public String admin() {

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="ja"
+	th:replace="common :: meta_header('kawatora',~{::link},~{::script})">
+</head>
+<body class="c2">
+
+	<div th:replace="common :: header"></div>
+
+	<!--PC用（801px以上端末）メニュー-->
+	<div th:replace="common :: pc_nav('')"></div>
+
+
+	<!--小さな端末用（800px以下端末）メニュー-->
+	<div th:replace="common :: sp_nav"></div>
+
+	<div id="contents" class="inner">
+		<div id="contents-in">
+
+			<div id="main">
+
+				<h1>ユーザー編集画面</h1>
+
+				<!-- 認証エラー時のメッセージを表示するエリア -->
+				<div class="alert alert-danger alert-dismissible fade show"
+					role="alert" th:if="${alertMessage}">
+					<span th:text="${alertMessage}">Bad Credential!</span>
+				</div>
+
+				<form action="#" th:action="@{/userEdit}" method="post"
+					th:object="${userEditForm}">
+					<div class="row">
+						<div class="form-group d-flex">
+							<label for="editId" class="col-sm-2">ユーザーID：</label>
+							<div class="col-sm-10"> 
+							<input id="editId" readonly
+								class="form-control-plaintext" name="editId" th:field="*{id}">
+						</div></div>
+					</div>
+					<div class="mb-3 row">
+						<div class="form-group d-flex">
+							<label for="editUserName" class="col-sm-2">ユーザー名：</label>
+							<div class="col-sm-10"> 
+							<input id="editUserName"
+								class="form-control" name="editUserName" th:field="*{username}">
+						</div></div>
+					</div>
+					<div class="mb-3 row">
+						<div class="form-group d-flex">
+							<label for="editPassword" class="col-sm-2">パスワード(更新の場合のみ入力)：</label>
+							<div class="col-sm-10">
+							<input type="password" id="editPassword"
+								class="form-control" name="editPassword" th:field="*{password}">
+						</div></div>
+					</div>
+					<div class="mb-3 row">
+						<div class="form-check form-switch">
+							<label for="editEnabled" class="form-check-label">有効</label> <input type="checkbox"
+								id="editEnabled" class="form-check-input" name="editEnabled"
+								th:field="*{enabled}">
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<div class="form-check form-switch">
+							<label for="editAdmin" class="form-check-label">管理者権限</label> <input type="checkbox"
+								id="editAdmin" class="form-check-input" name="editAdmin"
+								th:field="*{admin}">
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">更新</button>
+				</form>
+
+			</div>
+			<!--/#main-->
+
+			<div th:replace="common :: submenu"></div>
+			<!--/#sub-->
+
+		</div>
+		<!--/#contents-in-->
+
+	</div>
+	<!--/#contents-->
+
+	<div th:replace="common :: footer"></div>
+
+	<div th:replace="common :: footer_script"></div>
+
+	<script type="text/javascript">
+		$(function() {
+			table = $('#dataTable').DataTable();
+			table.destroy();
+			table = $('#dataTable')
+					.DataTable(
+							{
+								language : { // 日本語化
+									url : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
+								},
+								paging : false, // ページングしない。
+								ordering : true, // ソートする
+								mark : true
+							// 検索文字列ハイライト (by mark.js)
+							});
+		});
+	</script>
+
+</body>
+</html>

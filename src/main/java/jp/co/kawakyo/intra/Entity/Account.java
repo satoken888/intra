@@ -1,5 +1,7 @@
 package jp.co.kawakyo.intra.Entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,12 +30,22 @@ public class Account {
 		setAdmin(isAdmin);
 	}
 
+	public Account(Long id,String username,String password,boolean isEnabled,boolean isAdmin,Date delete_date,Date update_date){
+		setId(id);
+		setUsername(username);
+		setPassword(password);
+		setEnabled(isEnabled);
+		setAdmin(isAdmin);
+		setDeleteDate(delete_date);
+		setUpdateDate(update_date);
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(nullable = false, unique = true)
 	private Long id;
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String username;
 
 	@Column(nullable = false)
@@ -44,6 +56,10 @@ public class Account {
 	
 	@Column(nullable = false)
     private boolean admin;
+
+	private Date delete_date;
+
+	private Date update_date;
 
 	public Long getId() {
 		return id;
@@ -83,5 +99,21 @@ public class Account {
 
 	public void setAdmin(boolean isAdmin) {
 		this.admin = isAdmin;
+	}
+
+	public Date getDeleteDate(){
+		return delete_date;
+	}
+
+	public void setDeleteDate(Date delete_date){
+		this.delete_date = delete_date;
+	}
+
+	public Date getUpdateDate(){
+		return update_date;
+	}
+
+	public void setUpdateDate(Date update_date){
+		this.update_date = update_date;
 	}
 }

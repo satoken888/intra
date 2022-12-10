@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="meta_header(title,links,scripts)">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ここにサイト説明を入れます">
+<meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
+<link rel="stylesheet" href="webjars/bootstrap/5.2.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
+<link rel="stylesheet" href="css/slide.css" th:href="@{/css/slide.css}">
+<script src="webjars/bootstrap/5.2.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/openclose.js" th:src="@{/js/openclose.js}"></script>
+<script type="text/javascript" src="js/fixmenu_pagetop.js" th:src="@{/js/fixmenu_pagetop.js}"></script>
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<title th:text="${title}+' | sample app'">各ページタイトル | sample app</title>
+
+<th:block th:replace="${links} ?: _" />
+<th:block th:replace="${scripts} ?: _" />
+</head>
+<body>
+	<header th:fragment="header">
+		<div class="inner">
+			<div id="logo">
+				<a href="index" style="text-decoration:none;"><div style="font-size:1.8em;">河京イントラネット</div></a>
+			</div>
+			<div id="contact">
+				<p class="tel">
+					TEL:0241-22-0875<span>受付：9:00〜18:00 定休日：日曜日</span>
+				</p>
+			</div>
+		</div>
+	</header>
+
+	<!--PC用（801px以上端末）メニュー-->
+	<nav id="menubar" th:fragment="pc_nav(title)">
+		<ul class="inner">
+			<li th:classappend="${title} == '' ? 'current' : ''"><a href="index">ホーム<span>HOME</span></a></li>
+			<li th:classappend="${title} == 'company' ? 'current' : ''"><a href="company">会社概要<span>COMPANY</span></a></li>
+			<li th:classappend="${title} == 'service' ? 'current' : ''"><a href="service">売上情報<span>SALES</span></a></li>
+			<li th:classappend="${title} == 'department' ? 'current' : ''"><a href="recruit">採用情報<span>RECRUIT</span></a></li>
+			<li th:classappend="${title} == 'link' ? 'current' : ''"><a href="link">リンク<span>LINK</span></a></li>
+			<li th:classappend="${title} == 'sales' ? 'current' : ''"><a href="contact">社内相談ホットライン<span>CONTACT</span></a></li>
+		</ul>
+	</nav>
+
+	<nav id="menubar-s" th:fragment="sp_nav">
+		<ul>
+			<li><a href="index">ホーム<span>HOME</span></a></li>
+			<li><a href="company">会社概要<span>COMPANY</span></a></li>
+			<li><a href="service">売上情報<span>SALES</span></a></li>
+			<li><a href="recruit">採用情報<span>RECRUIT</span></a></li>
+			<li><a href="link">リンク<span>LINK</span></a></li>
+			<li><a href="contact">社内相談ホットライン<span>CONTACT</span></a></li>
+		</ul>
+	</nav>
+
+	<div id="sub" th:fragment="submenu">
+
+		<nav>
+			<h2>Contents</h2>
+			<ul class="submenu">
+				<li><a href="#" target="_blank">日報（Comming soon...）</a></li>
+				<li><a href="https://id.obc.jp/sr638rwe8f05/" target="_blank">勤怠</a></li>
+				<li><a href="https://roundcube.blue.shared-server.net/" target="_blank">メール（使用したい人は室長へ）</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">給与明細（Comming soon...）</a></li>
+			</ul>
+		</nav>
+
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<nav>
+				<ul class="submenu">
+					<li><a href="user">ユーザー管理</a></li>
+					<li><a href="#">サンプル</a></li>
+					<li><a href="#">サンプル</a></li>
+					<li><a href="#">############</a></li>
+					<li><a href="#"><form action="#" th:action="@{/logout}"
+								method="post">
+								<input type="submit" value="ログアウト" />
+							</form></a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<section>
+
+			<h2>製品情報</h2>
+
+			<div class="list">
+				<a href="service2">
+					<figure>
+						<img src="images/sample1.jpg" alt="写真の説明">
+					</figure>
+					<h4>
+						製品タイトル<span class="newicon">NEW</span>
+					</h4>
+					<p>サンプルテキスト。サンプルテキスト。</p>
+				</a>
+			</div>
+
+			<div class="list">
+				<a href="service2">
+					<figure>
+						<img src="images/sample1.jpg" alt="写真の説明">
+					</figure>
+					<h4>製品タイトル</h4>
+					<p>サンプルテキスト。サンプルテキスト。</p>
+				</a>
+			</div>
+
+			<div class="list">
+				<a href="service2">
+					<figure>
+						<img src="images/sample1.jpg" alt="写真の説明">
+					</figure>
+					<h4>製品タイトル</h4>
+					<p>サンプルテキスト。サンプルテキスト。</p>
+				</a>
+			</div>
+
+		</section>
+
+		<div class="box1">
+			<h2>アクセス</h2>
+			<p>
+				東京都XX区XXXXビル３F<br> TEL：03-0000-0000<br> 受付：9:00～16:00<br>
+				定休日：土日祝
+			</p>
+		</div>
+
+	</div>
+
+	<footer th:fragment="footer">
+
+		<div id="footermenu" class="inner">
+			<ul>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="#">メニューサンプル</a></li>
+			</ul>
+		</div>
+		<!--/footermenu-->
+
+		<div id="copyright">
+			<small>Copyright&copy; <a href="index">Kawakyo</a> All Rights
+				Reserved.
+			</small> <span class="pr"><a href="http://template-party.com/"
+				target="_blank">《Web Design:Template-Party》</a></span>
+		</div>
+
+	</footer>
+
+	<div th:fragment="footer_script">
+		<p class="nav-fix-pos-pagetop">
+			<a href="#">↑</a>
+		</p>
+
+		<!--小さな端末用（800px以下端末）メニュー-->
+		<script type="text/javascript">
+			if (OCwindowWidth() <= 800) {
+				open_close("newinfo_hdr", "newinfo");
+			}
+		</script>
+
+		<!--メニュー開閉ボタン-->
+		<div id="menubar_hdr" class="close"></div>
+		<!--メニューの開閉処理条件設定　800px以下-->
+		<script type="text/javascript">
+			if (OCwindowWidth() <= 800) {
+				open_close("menubar_hdr", "menubar-s");
+			}
+		</script>
+	</div>
+</body>
+</html>

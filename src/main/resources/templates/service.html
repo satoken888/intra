@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head lang="ja" th:replace="common :: meta_header('kawatora',~{::link},~{::script})">
+
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css" />
+	<script type="text/javascript" src="//code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="//cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/g/mark.js(jquery.mark.min.js),datatables.mark.js"></script>
+</head>
+
+<body class="c2">
+
+	<style>
+		mark {
+			background: gold;
+			color: black;
+		}
+	</style>
+
+	<div th:replace="common :: header"></div>
+
+	<!--PC用（801px以上端末）メニュー-->
+	<div th:replace="common :: pc_nav('service')"></div>
+
+
+	<!--小さな端末用（800px以下端末）メニュー-->
+	<div th:replace="common :: sp_nav"></div>
+
+	<div id="contents" class="inner">
+		<div id="contents-in">
+
+			<div id="main">
+				
+				<div class="my-4 p-4 bg-primary text-white rounded">
+					<h1>売上情報</h1>
+				</div>
+
+				<iframe width="800" height="600" frameborder="0" src="https://kawakyo.cybozu.com/k/49/report/portlet?report=5520703&amp;chartType=line&amp;title=1"></iframe>
+
+			</div>
+			<!--/#main-->
+
+			<div th:replace="common :: submenu"></div>
+			<!--/#sub-->
+
+		</div>
+		<!--/#contents-in-->
+
+	</div>
+	<!--/#contents-->
+
+	<div th:replace="common :: footer"></div>
+
+	<div th:replace="common :: footer_script"></div>
+
+	<script type="text/javascript">
+		$(function () {
+			table = $('#dataTable').DataTable();
+			table.destroy();
+			table = $('#dataTable').DataTable({
+				language: {	// 日本語化
+					url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
+				},
+				paging: false,	// ページングしない。
+				ordering: true,	// ソートする
+				mark: true	// 検索文字列ハイライト (by mark.js)
+			});
+
+		});
+	</script>
+
+</body>
+
+</html>

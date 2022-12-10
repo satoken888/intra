@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>管理者ページ</h1>
-    <p>ようこそ<span sec:authentication="principal.loginUser.name">管理者</span>さん</p>
+    <p>ようこそ<span sec:authentication="name">管理者</span>さん</p>
     <a href="index.html" th:href="@{/}">トップページへ</a>
     <form method="post" action="index.html" th:action="@{/logout}">
         <button type="submit">ログアウト</button>

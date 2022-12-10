@@ -16,6 +16,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 	
 	@Transactional
 	@Modifying
-	@Query("update Account a set a.enabled = false where a.id = :id")
+	@Query("update Account a set a.enabled = false, a.update_date = now(), a.delete_date = now() where a.id = :id")
 	public int deleteUserById(Long id);
 }
