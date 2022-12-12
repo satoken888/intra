@@ -4,19 +4,18 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ここにサイト説明を入れます">
-<meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
-<link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css" />
+<meta name="description" content="株式会社河京社員向けのイントラネットです。全ての情報の入口に。">
+<link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}" />
 <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}">
 <link rel="stylesheet" href="/css/slide.css" th:href="@{/css/slide.css}">
-<script src="/webjars/bootstrap/5.2.2/js/bootstrap.min.js"></script>
+<script src="/webjars/bootstrap/5.2.2/js/bootstrap.min.js" th:href="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
 <script type="text/javascript" src="/js/openclose.js" th:src="@{/js/openclose.js}"></script>
 <script type="text/javascript" src="/js/fixmenu_pagetop.js" th:src="@{/js/fixmenu_pagetop.js}"></script>
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<title th:text="${title}+' | sample app'">各ページタイトル | sample app</title>
+<title th:text="${title}+' | 河京ポータル'">河京ポータル</title>
 
 <th:block th:replace="${links} ?: _" />
 <th:block th:replace="${scripts} ?: _" />
@@ -25,7 +24,7 @@
 	<header th:fragment="header">
 		<div class="inner">
 			<div id="logo">
-				<a href="index" style="text-decoration:none;"><div style="font-size:1.8em;">河京イントラネット</div></a>
+				<a href="/index" th:href="@{/index}" style="text-decoration:none;"><div style="font-size:1.8em;">河京ポータル</div></a>
 			</div>
 			<div id="contact">
 				<p class="tel">
@@ -38,35 +37,35 @@
 	<!--PC用（801px以上端末）メニュー-->
 	<nav id="menubar" th:fragment="pc_nav(title)">
 		<ul class="inner">
-			<li th:classappend="${title} == '' ? 'current' : ''"><a href="/index">ホーム<span>HOME</span></a></li>
-			<li th:classappend="${title} == 'company' ? 'current' : ''"><a href="/company">会社概要<span>COMPANY</span></a></li>
-			<li th:classappend="${title} == 'service' ? 'current' : ''"><a href="/service">売上情報<span>SALES</span></a></li>
-			<li th:classappend="${title} == 'department' ? 'current' : ''"><a href="/recruit">採用情報<span>RECRUIT</span></a></li>
-			<li th:classappend="${title} == 'link' ? 'current' : ''"><a href="/link">リンク<span>LINK</span></a></li>
-			<li th:classappend="${title} == 'contact' ? 'current' : ''"><a href="/contact">社内相談ホットライン<span>CONTACT</span></a></li>
+			<li th:classappend="${title} == '' ? 'current' : ''"><a href="/index"  th:href="@{/index}">ホーム<span>HOME</span></a></li>
+			<li th:classappend="${title} == 'company' ? 'current' : ''"><a href="/company" th:href="@{/company}">会社概要<span>COMPANY</span></a></li>
+			<li th:classappend="${title} == 'service' ? 'current' : ''"><a href="/service" th:href="@{/service}">売上情報<span>SALES</span></a></li>
+			<li th:classappend="${title} == 'department' ? 'current' : ''"><a href="/tool" th:href="@{/tool}">部署別ツール<span>TOOL</span></a></li>
+			<li th:classappend="${title} == 'link' ? 'current' : ''"><a href="/link" th:href="@{/link}">リンク集<span>LINK</span></a></li>
+			<li th:classappend="${title} == 'contact' ? 'current' : ''"><a href="/contact" th:href="@{/contact}">社内相談ホットライン<span>CONTACT</span></a></li>
 		</ul>
 	</nav>
 
 	<nav id="menubar-s" th:fragment="sp_nav">
 		<ul>
-			<li><a href="/index">ホーム<span>HOME</span></a></li>
-			<li><a href="/company">会社概要<span>COMPANY</span></a></li>
-			<li><a href="/service">売上情報<span>SALES</span></a></li>
-			<li><a href="/recruit">採用情報<span>RECRUIT</span></a></li>
-			<li><a href="/link">リンク<span>LINK</span></a></li>
-			<li><a href="/contact">社内相談ホットライン<span>CONTACT</span></a></li>
+			<li><a href="/index" th:href="@{/index}" >ホーム<span>HOME</span></a></li>
+			<li><a href="/company" th:href="@{/company}">会社概要<span>COMPANY</span></a></li>
+			<li><a href="/service" th:href="@{/service}">売上情報<span>SALES</span></a></li>
+			<li><a href="/tool" th:href="@{/tool}">部署別ツール<span>TOOL</span></a></li>
+			<li><a href="/link" th:href="@{/link}">リンク集<span>LINK</span></a></li>
+			<li><a href="/contact" th:href="@{/contact}">社内相談ホットライン<span>CONTACT</span></a></li>
 		</ul>
 	</nav>
 
 	<div id="sub" th:fragment="submenu">
-
 		<nav>
 			<h2>Contents</h2>
 			<ul class="submenu">
 				<li><a href="#" target="_blank">日報（Comming soon...）</a></li>
 				<li><a href="https://id.obc.jp/sr638rwe8f05/" target="_blank">勤怠</a></li>
 				<li><a href="https://roundcube.blue.shared-server.net/" target="_blank">メール（使用したい人は室長へ）</a></li>
-				<li><a href="#">メニューサンプル</a></li>
+				<li><a href="https://calendar.google.com/calendar/embed?src=bocr12n5mikihkremtql5e2t30%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank">社内カレンダー</a></li>
+				<li><a href="#">Kバリュー投票(Coming soon...)</a></li>
 				<li><a href="#">給与明細（Comming soon...）</a></li>
 			</ul>
 		</nav>
@@ -74,14 +73,17 @@
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<nav>
 				<ul class="submenu">
-					<li><a href="/user">ユーザー管理</a></li>
+					<li><a href="/user" th:href="@{/user}">ユーザー管理</a></li>
 					<li><a href="#">サンプル</a></li>
 					<li><a href="#">サンプル</a></li>
 					<li><a href="#">############</a></li>
-					<li><a href="#"><form action="#" th:action="@{/logout}"
-								method="post">
+					<li>
+						<a href="#">
+							<form action="#" th:action="@{/logout}"	method="post">
 								<input type="submit" value="ログアウト" />
-							</form></a></li>
+							</form>
+						</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -93,7 +95,7 @@
 			<div class="list">
 				<a href="service2">
 					<figure>
-						<img src="/images/sample1.jpg" alt="写真の説明">
+						<img src="/images/sample1.jpg" th:src="@{/images/sample1.jpg}" alt="写真の説明">
 					</figure>
 					<h4>
 						製品タイトル<span class="newicon">NEW</span>
@@ -105,7 +107,7 @@
 			<div class="list">
 				<a href="service2">
 					<figure>
-						<img src="/images/sample1.jpg" alt="写真の説明">
+						<img src="/images/sample1.jpg" th:src="@{/images/sample1.jpg}" alt="写真の説明">
 					</figure>
 					<h4>製品タイトル</h4>
 					<p>サンプルテキスト。サンプルテキスト。</p>
@@ -115,7 +117,7 @@
 			<div class="list">
 				<a href="service2">
 					<figure>
-						<img src="/images/sample1.jpg" alt="写真の説明">
+						<img src="/images/sample1.jpg" th:src="@{/images/sample1.jpg}" alt="写真の説明">
 					</figure>
 					<h4>製品タイトル</h4>
 					<p>サンプルテキスト。サンプルテキスト。</p>
@@ -181,7 +183,7 @@
 		<!--/footermenu-->
 
 		<div id="copyright">
-			<small>Copyright&copy; <a href="index">Kawakyo</a> All Rights
+			<small>Copyright&copy; <a href="/index" th:href="@{/index}" >Kawakyo</a> All Rights
 				Reserved.
 			</small> <span class="pr"><a href="http://template-party.com/"
 				target="_blank">《Web Design:Template-Party》</a></span>

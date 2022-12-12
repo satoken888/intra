@@ -27,11 +27,12 @@
 
                     <!-- フォームの情報はここからです -->
                     <form method="post" action="/contact/finish" th:action="@{/contact/finish}">
+                        <input type="hidden" name="inquiry_text" th:value="${inquiry_text}" />
                         <table class="ta1">
                             <tr>
                                 <th>お問い合わせ内容<span style="color:red">※</span></th>
                                 <td>
-                                    <input readonly type="textarea" name="inquiry_text" th:value="${inquiry_text}">
+                                    <p th:utext="${inquiry_text}"></p>
                                 </td>
                             </tr>
                         </table>

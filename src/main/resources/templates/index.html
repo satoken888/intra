@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head lang="ja" th:replace="common :: meta_header('kawatora',~{::link},~{::script})">
+<head lang="ja" th:replace="common :: meta_header('top',~{::link},~{::script})">
 </head>
 
 <body class="c2">
@@ -23,13 +23,13 @@
                         <div class="card mb-3">
                               <div class="row g-0">
                                     <div class="col-md-4">
-                                          <img src="images/president.jpg" alt="社長画像">
+                                          <img src="images/president.jpg" th:src="@{/images/president.jpg}" alt="社長画像">
                                     </div>
                                     <div class="col-md-8">
                                           <div class="card-body">
                                                 <h5 class="card-title">社長より今月の一言</h5>
                                                 <p class="card-text">
-                                                      10月もお疲れさまでした。今年は店舗実績も本社実績も前年はもとより予算を上回る結果を残すことが出来ました。勿論、営業利益も1000万円以上になる見通しです。これまで前年比べ大幅な利益改善を行っておりますが合計営業利益はまだ2000万円台の見込みです。この11月、12月で合計7000万円強の営業利益を見込んでいます。来年1月、2月で2000万円強、利益減少が発生しますので年内にできるだけ利益積み上げを行いたい思いです。忙しい日々が続きますが、皆さんで目配り、気配りを行いこの繁忙期を乗り越えていきましょう。出来ましたら、友人、知人、親戚の方々にも河京の喜多方ラーメンをお勧めいただくとありがたいです。
+                                                      11月実績は前年比１１５％ほどでした。前年に修学旅行生のコロナ禍による延期が11月、12月にあったことで直営店舗伸び率は期待できませんでした。しかし「全国旅行支援」等のGO TO変形支援策が国策で実施され全体的な人流は多くなりました。従ってアイビーへのお土産品等の動きも良く全体的に実績は上向きました。予算に若干足りなかった程度でした。恐らく営業利益も２０００万円以上は期待できます。いわゆる上半期６か月間は想定内の数字で進んでいます。今月１２月実績が予算通り１億８０００万円以上になれば今期山場は超えることが出来そうです。踏ん張りどころなので皆さんの協力よろしくお願いします。
                                                 </p>
                                           </div>
                                     </div>
@@ -40,10 +40,10 @@
                         <!--スライドショー-->
                         <aside id="mainimg">
                               <div class="inner">
-                                    <img src="images/1.jpg" alt="" class="slide0">
-                                    <img src="images/1.jpg" alt="" class="slide1">
-                                    <img src="images/2.jpg" alt="" class="slide2">
-                                    <img src="images/3.jpg" alt="" class="slide3">
+                                    <img src="images/1.jpg" th:src="@{/images/1.jpg}" alt="" class="slide0">
+                                    <img src="images/1.jpg" th:src="@{/images/1.jpg}" alt="" class="slide1">
+                                    <img src="images/2.jpg" th:src="@{/images/2.jpg}" alt="" class="slide2">
+                                    <img src="images/3.jpg" th:src="@{/images/3.jpg}" alt="" class="slide3">
                               </div>
                         </aside>
 
